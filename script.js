@@ -636,7 +636,7 @@ function finalSummaryCalculation() {
     }
   });
 
-  // ✅ Print all total floor data
+  // ✅ Print Total Floors
   if (allTotalFloors.length > 0) {
     allTotalFloors.forEach((t, index) => {
       const floorTable = `
@@ -658,7 +658,7 @@ function finalSummaryCalculation() {
     });
   }
 
-  // ✅ Print all total wall data
+  // ✅ Print Total Walls
   if (allTotalWalls.length > 0) {
     allTotalWalls.forEach((w, index) => {
       const wallTable = `
@@ -701,9 +701,10 @@ function finalSummaryCalculation() {
     grandTotalWeight += s.weight;
   }
 
-  // ✅ Grand Total with Loading Charges
-  const weightRatePerKg = 0.22;
+  // ✅ Grand Total with NEW Loading Charges (₹250 per TON)
+  const weightRatePerKg = 0.25;   // ✅ Correct: 250 / 1000
   const weightCost = Math.ceil((grandTotalWeight * weightRatePerKg) / 10) * 10;
+
   const tileOnlyCost = grandTotalCost;
   const customerTotal = tileOnlyCost + weightCost;
   const roundedTotal = Math.round(customerTotal);
@@ -726,9 +727,6 @@ function finalSummaryCalculation() {
     ${printTables}
     ${grandTable}`;
 }
-
-
-
 
 // 🔘 Add Print Button beside Final Summary Button
 document.addEventListener('DOMContentLoaded', () => {
